@@ -1,12 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import { React, useEffect, useState } from 'react';
-import { Button, StyleSheet, Text, TextInput, View, ScrollView } from 'react-native';
+import { Button, Dimensions, StyleSheet, Text, TextInput, View, ScrollView } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { NavigationContainer, useFocusEffect } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-
+const windowHeight = Dimensions.get('window').height;
 export default function App() {
+  
+
   const HomeScreen = ({ navigation }) => {
     const EasyLives = 5;
     const NormalLives = 3;
@@ -375,7 +377,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginHorizontal: 50,
-    marginVertical: 10
+    marginVertical: 10,
+    maxHeight: windowHeight
   },
   dropdown: {
     color: "black"
