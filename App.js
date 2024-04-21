@@ -304,7 +304,8 @@ export default function App() {
     const MakeGuessFunc = experimental ? makeGuessExperimental : makeGuess
 
     return (
-      <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={true}>
+      {/*<View style={styles.container}>*/}
 
         {(experimental && !start && deltaScore > 0) ? (<Text>+ {deltaScore}</Text>) : (deltaScore < 0 ? (<Text>{deltaScore}</Text>) : null)}
         {(start) ? (experimental ? <Text>You receive points for correct answers, based on how many guesses are remaining. Bonus points earned from getting it right on the first try, for how many correct answers in a row, and for a "Redemption" question (correcting a previous error).</Text>: <Text>You receive one point for every correct answer. Your score is reset after an incorrect answer.</Text>) : null}
@@ -350,7 +351,8 @@ export default function App() {
           </View>) : null}
 
         <StatusBar style="auto" />
-      </View>
+      {/*</View>*/}
+      </ScrollView>
     );
   }
 
