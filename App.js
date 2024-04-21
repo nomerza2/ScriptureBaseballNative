@@ -306,7 +306,8 @@ export default function App() {
     const MakeGuessFunc = experimental ? makeGuessExperimental : makeGuess
 
     return (
-      <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={true}>
+      <View style={{flex: 1}}>
+      <ScrollView style={{flex: 1, maxHeight: windowHeight, padding:2, margin:2, borderWidth:5}} contentContainerStyle={styles.container2} showsVerticalScrollIndicator={true}>
       {/*<View style={styles.container}>*/}
 
         {(experimental && !start && deltaScore > 0) ? (<Text>+ {deltaScore}</Text>) : (deltaScore < 0 ? (<Text>{deltaScore}</Text>) : null)}
@@ -328,7 +329,7 @@ export default function App() {
         </View>
         <Text>{"Max Chapter: " + String(maxChpGuess)}</Text>
 
-        {start ? (experimental ? <Text>Each button has a hint, a new one becomes available after each correct guess. Hints consist of a 'Short Hint', which will be 'Wrong Book' if it is in the wrong book of scripture, 'Lower Chapter' if it is the correct book but the chapter is numerically lower, and 'Higher Chapter' if the chapter is higher. Additionally, an 'AI HINT' will be displayed, powered by ChatGPT 3.5, to provide additional context. Note that AI can make mistakes and may be wrong or (more likely) provide useless information</Text>: <Text>Hints will be displayed here after each incorrect guess. Hints will be 'Wrong Book' if it is in the wrong book of scripture, 'Lower Chapter' if it is the correct book but the chapter is numerically lower, and 'Higher Chapter' if the chapter is higher.</Text>) : null}
+        {start ? (experimental ? <Text>Each incorrect guess enables a button with a hint. Hints consist of a 'Short Hint', which will be 'Wrong Book', 'Lower Chapter' or 'Higher Chapter'. The 'AI HINT' is powered by ChatGPT 3.5, to provide additional context. Note that AI can make mistakes and may be wrong or (more likely) provide useless information</Text>: <Text>Hints will be displayed here after each incorrect guess. Hints will be 'Wrong Book' if it is in the wrong book of scripture, 'Lower Chapter' if it is the correct book but the chapter is numerically lower, and 'Higher Chapter' if the chapter is higher.</Text>) : null}
         {(experimental) ? (
           <View>
             {(hintData.length > 0) ? (
@@ -355,6 +356,7 @@ export default function App() {
         <StatusBar style="auto" />
       {/*</View>*/}
       </ScrollView>
+      </View>
     );
   }
 
@@ -376,9 +378,20 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    marginHorizontal: 50,
+    maxHeight: windowHeight,
+  },
+  container2: {
+    flex: 1,
+    flexGrow: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
     marginVertical: 10,
-    maxHeight: windowHeight
+    //maxHeight: windowHeight,
+    marginTop: 10,
+    marginHorizontal: 4,
+    //paddingBottom: 50,
+    //paddingTop: 50
   },
   dropdown: {
     color: "black"
