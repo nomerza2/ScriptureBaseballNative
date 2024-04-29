@@ -120,14 +120,11 @@ export default function App() {
       setValue(null)
       
       var cur = genRandomVerse()
-      console.log('red 1', newred)
       var newarr = []
       let prob = Math.min(0.3 + (0.1 * newred.length), 0.8)
       let roll = Math.random()
-      console.log('roll', roll, 'prob', prob)
       if (newred.length > 0 && roll < prob) {
         let i = Math.floor(Math.random() * newred.length)
-        console.log(i)
         if (!newred[i].setdelay) {
           cur = newred[i]
           for (var j = 0; j < newred.length; j++) {
@@ -144,11 +141,9 @@ export default function App() {
       }
       setCurrent(cur)
 
-      console.log('newarr', newarr)
       for (var j = 0; j < newarr.length; j++) {
         newarr[j].setdelay = Math.max(newarr[j].setdelay - 1, 0);
       }
-      console.log('newarr delay shift', newarr)
       setRedemption(newarr)
 
       setGptHints(gptHintFile[cur.ref])
@@ -202,7 +197,6 @@ export default function App() {
       } else if (guesses == 0) {
         var newred = current
         newred.setdelay = 1
-        console.log(',', newred)
         
         setGuesses(startingGuesses)
         setHintIndex(0)
@@ -226,6 +220,7 @@ export default function App() {
           if (remBonus) {
             rScore = 30
             setFeedback("REDEMPTION!")
+            setRemBonus(false)
           } else {
             setFeedback("Correct!")
           }
