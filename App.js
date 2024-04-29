@@ -32,6 +32,10 @@ export default function App() {
         <Button title="Normal" onPress={onNormalClick}></Button>
         <Button title="Experimental" onPress={onExperimentalClick}></Button>
         <Text>Created by Nathan Omerza</Text>
+        <a href={"https://www.churchofjesuschrist.org/comeuntochrist"} target="_blank">
+
+          <Button title="Learn More about the Book of Mormon" />
+          </a>
       </View>
     );
   }
